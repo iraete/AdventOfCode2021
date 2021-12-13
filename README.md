@@ -13,11 +13,13 @@ This project also contains a test suite to run the given test inputs from the Ao
 
 ## Usage
 
+In the `/src` folder:
+
 ```bash
 dotnet run -- day problem [input_file] [-o output_directory]
 ```
 
-Example: `dotnet run -- 1 1 ./inputfile.in -o ../output
+Example: `dotnet run -- 1 1 ./inputfile.in -o ../output`
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
