@@ -1,6 +1,6 @@
 using System;
 using NUnit.Framework;
-using AdventOfCode2021.Solutions.Day1;
+using AdventOfCode2021.Solutions.Day2;
 
 namespace AdventOfCode2021Tests.SolutionsTests.Day2
 {
@@ -21,7 +21,7 @@ namespace AdventOfCode2021Tests.SolutionsTests.Day2
         public void Main_ProvidedTestCase_Success()
         {
             string result = Problem1.Main(input);
-            Assert.AreEqual(10, Int64.Parse(result));
+            Assert.AreEqual(150, Int64.Parse(result));
         }
     }
 }
