@@ -17,14 +17,14 @@ namespace AdventOfCode2021
 
         static void RunOptions(CommandLineOptions opts)
         {
-
             string directory = GetOutputDirectoryPath(opts);
+            string inputFile = GetInputFilePath(opts);
             StreamWriter sw = GetOutputFileWriter(opts, directory);
 
             if (sw != null)
                 Console.SetOut(sw);
 
-            string[] input = File.ReadAllLines(opts.InputFile);
+            string[] input = File.ReadAllLines(inputFile);
             DateTime runAtTime = DateTime.Now;
 
             Stopwatch timer = new Stopwatch();
@@ -40,6 +40,19 @@ namespace AdventOfCode2021
             
             if (sw != null)
                 sw.Dispose();
+        }
+
+        private static string GetInputFilePath(CommandLineOptions opts)
+        {
+            const string DEFAULT_INPUT_DIR = "../input";
+
+            if (string.IsNullOrEmpty(opts.InputFile))
+            {
+                return DEFAULT_INPUT_DIR 
+                    + $"/day{opts.Day}_problem{opts.Problem}.in";
+            }
+
+            return opts.InputFile;
         }
 
         private static string GetOutputDirectoryPath(CommandLineOptions opts)
@@ -59,16 +72,9 @@ namespace AdventOfCode2021
         private static StreamWriter GetOutputFileWriter(CommandLineOptions opts, 
             string directoryPath)
         {
-            const string DEFAULT_INPUT_DIR = "../input";
 
             if (directoryPath == null)
                 return null;
-
-            if (string.IsNullOrEmpty(opts.InputFile))
-            {
-                opts.InputFile = DEFAULT_INPUT_DIR 
-                    + $"/day{opts.Day}_problem{opts.Problem}.in";
-            }
 
             string fileName = $"results_day{opts.Day}_problem{opts.Problem}";
             string relativePath = $"{directoryPath}/{fileName}";
